@@ -73,7 +73,7 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(
     <div class="hello">学 习 反 馈 单</div>
     <h1>冯嘉豪 同学 · CSP05-12_初等数论②</h1>
     <div class="sub">CSP05 周日 10:30 班 ｜ 2026-11-15 ｜ CSP05-12_初等数论②</div>
-    <div class="chips"><div class="chip">提交 <b>8</b> 次</div><div class="chip">AC <b>0/0</b> 题</div></div>
+    <div class="chips"><div class="chip">提交 <b>8</b> 次</div><div class="chip">AC <b>5/10</b> 题</div></div>
   </div>
 
   <div class="card praise">
@@ -92,7 +92,7 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(
 
   <div class="card">
     <h2>📊 本讲完成情况</h2>
-    <div class="bars"><div class="bar-num">本节暂无作业数据</div></div>
+    <div class="bars"><div class="bar-row"><span class="bar-label">基础训练</span><span class="bar"><i style="width:50%;background:linear-gradient(90deg,#fbbf24,#f59e0b)"></i></span><span class="bar-num">5/10 · 50%</span></div></div>
   </div>
 
   <div class="card">
@@ -105,18 +105,6 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;color:var(
 
   
 
-  <div class="card notes"><h2>📚 本节课学习笔记</h2><div class="ntitle">📖 课程内容</div><p class="nbody">CSP05-12 初等数论②</p><div class="ntitle">🌟 这样记（口诀 + 比喻）</div><h3 class="nh">一把两千年前的老筛子</h3><ul class="nb"><li>想找 1~n 里所有质数，一个个试太慢啦</li><li>反过来想：<b>把合数划掉，剩下的就是质数</b></li><li>就像筛沙子，沙子（合数）漏下去，金子（质数）留下来</li><li>这个方法是古希腊人发明的，用了两千多年</li></ul><p class="nkv"><b>口诀：质数的倍数是合数，划掉划掉全划掉！</b></p><h3 class="nh">🕳️ 埃氏筛：从 i² 开始划</h3><ul class="nb"><li>找到一个质数 i，就把它的倍数全划掉</li><li>从 <code>i*i</code> 开始划，不从 <code>2*i</code></li><li>为什么？小倍数早被 2、3 划过了，像扫地机器人不会重扫扫过的地</li><li>速度：<b>O(n log log n)</b>，差不多就是“飞快”</li></ul><p class="nkv"><b>口诀：找到质数就开工，平方起步不放松！</b></p><h3 class="nh">⚡ 线性筛：一个合数只划一次</h3><ul class="nb"><li>埃氏筛会重复划：12 被 2 划一次、又被 3 划一次</li><li>就像排队的同学被点了两遍名，浪费！</li><li>线性筛遇到 <code>i % primes[j] == 0</code> 就 <b>break</b>（“立刻停”）</li><li>保证每个合数只被它<b>最小的质因数</b>划掉一次</li><li>速度：<b>O(n)</b>，真·一遍过</li></ul><p class="nkv"><b>口诀：碰到小因数，立刻喊停不重复！</b></p><h3 class="nh">📋 质数表：存一次，用百次</h3><ul class="nb"><li>划完把质数存进 <code>primes[]</code>，像糖果盒装满糖</li><li>第 k 个质数？直接拿！数有几个？直接看！</li><li>孪生质数（差 2 的对）？扫一遍表就行</li><li>查一个数是不是质数？O(1)，一秒回答</li></ul><p class="nkv"><b>口诀：先存表，后查询，一次劳动百次吃！</b></p><h3 class="nh">🎁 minPF：筛法的附赠礼物</h3><ul class="nb"><li>minPF 就是“最小质因数”（把一个数整除的最小质数）</li><li>分解质因数时反复 <code>x /= minPF[x]</code>，飞快</li><li>像剥糖葫芦，一颗一颗剥，几下剥完</li></ul><p class="nkv"><b>口诀：最小因子先剥掉，剥到一数分解好！</b></p><h3 class="nh">两种筛怎么选？</h3><ul class="nb"><li>平时写题：埃氏筛，简单够用</li><li>要顺便算别的：线性筛，一步到位</li></ul><p class="nkv"><b>口诀：日常埃氏好又快，要带礼物线性来！</b></p><h3 class="nh">⌨️ 动手照着敲</h3><pre class="ncode"><code>bool notPrime[10000005];      // true 表示是合数
-int primes[700000], cnt = 0;  // 质数表和数量
-void sieve(int n) {           // 筛出 1~n 的质数
-    notPrime[0] = notPrime[1] = true; // 0 和 1 不是质数
-    for (int i = 2; i &lt;= n; i++) {
-        if (!notPrime[i]) {           // i 没被划，是质数！
-            primes[cnt++] = i;        // 放进质数表
-            for (long long j = 1LL*i*i; j &lt;= n; j += i)
-                notPrime[j] = true;   // 从 i*i 开始划掉倍数
-        }
-    }
-}</code></pre><p class="nfinal">⭐ <b>一句话记住这节课</b>：质数开工划倍数，平方起步；合数只死一次，最小因数来处决！</p></div>
   <div class="footer">
     2026-11-15
   </div></div></body></html>
